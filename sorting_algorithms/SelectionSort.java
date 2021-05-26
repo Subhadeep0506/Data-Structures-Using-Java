@@ -1,3 +1,5 @@
+package sorting_algorithms;
+
 import java.util.Scanner;
 
 public class SelectionSort {

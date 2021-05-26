@@ -1,17 +1,23 @@
+package sorting_algorithms;
+
 import java.util.Scanner;
 
-public class InsertionSort {
-
-    public int[] insertionSort(int[] array){
-        for(int i = 1; i < array.length; i++){
-            int j = i - 1;
-            int key = array[i];
-            while(j >= 0 && key < array[j]){
-                array[j + 1] = array[j];
-                j--;
+public class ShellSort {
+    
+    public int[] shellSort(int[] array) {
+        
+        for(int gap = array.length / 2; gap > 0; gap /= 2){ 
+            for(int i = gap; i < array.length; i++){
+                int newElement = array[i];
+                int j = i;
+                while(j >= gap && array[j - gap] > newElement){
+                    array[j] = array[j - gap];
+                    j -= gap;
+                }
+                array[j] = newElement;
             }
-            array[j + 1] = key;
         }
+
         return array;
     }
 
@@ -25,8 +31,8 @@ public class InsertionSort {
         for(int i = 0; i < size; i++){
             array[i] = sc.nextInt();
         }
-        InsertionSort obj_1 = new InsertionSort();
-        array = obj_1.insertionSort(array);
+        ShellSort obj_1 = new ShellSort();
+        array = obj_1.shellSort(array);
         System.out.println("Sorted elements: ");
         for(int i = 0; i < size; i++){
             System.out.print(array[i] + " ");

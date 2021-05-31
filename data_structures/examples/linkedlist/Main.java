@@ -15,6 +15,8 @@ public class Main {
         list.addToFront(oliverHelden);
         list.addToFront(mikeWilliams);
 
+        list.addToEnd(new Employee("My", "Self", 3423));
+
         list.printList();
     }
 }

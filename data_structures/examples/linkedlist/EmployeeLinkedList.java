@@ -11,10 +11,20 @@ public class EmployeeLinkedList {
         head = node;
     }
 
+    public void addToEnd(Employee employee){
+        EmployeeNode node = new EmployeeNode(employee);
+        EmployeeNode current;
+        current = head;
+        while (current.getNext() != null) {
+            current = current.getNext();
+        }
+        current.setNext(node);
+    }
+
     public void printList(){
 
         EmployeeNode current = head;
-        System.out.println("HEAD -> ");
+        System.out.print("HEAD -> ");
         while (current != null){
             System.out.print(current+ " -> ");
             current = current.getNext();

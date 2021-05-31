@@ -1,6 +1,7 @@
 package data_structures.examples.doublylinkedlist;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Employee maryJane = new Employee("Mary", "Jane", 3452);
@@ -18,10 +19,9 @@ public class Main {
         //System.out.println("Size of list: " + list.getSize());
 
         //list.printList();
-
         // System.out.println();
 
-        // Employee billGates = new Employee("Bill", "Gates", 2351);
+        Employee billGates = new Employee("Bill", "Gates", 2351);
 
         // list.addToEnd(billGates);
         // list.printList();
@@ -30,8 +30,16 @@ public class Main {
         // list.removeFromFront();
         // list.printList();
 
-        System.out.println();
-        list.removeFromEnd();
+        //System.out.println();
+        //list.removeFromEnd();
+        //list.printList();
+        //System.out.println();
+
+        list.addBefore(billGates, oliverHelden);
+        //list.printList();
+
+        Employee killBill = new Employee("Kill", "Bill", 3512);
+        list.addBefore(killBill, mikeWilliams);
         list.printList();
     }
 }

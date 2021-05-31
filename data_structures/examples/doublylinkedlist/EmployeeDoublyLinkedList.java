@@ -69,6 +69,7 @@ public class EmployeeDoublyLinkedList {
         removeNode.setPrevious(null);
         return removeNode;       
     }
+
     public int getSize(){
         return size;
     }
@@ -86,5 +87,20 @@ public class EmployeeDoublyLinkedList {
             current = current.getNext();
         }
         System.out.print("null");
+    }
+
+    public void addBefore(Employee newEmployee, Employee targetEmployee){
+
+        EmployeeNode node = new EmployeeNode(newEmployee);
+        if (isEmpty())
+            addToFront(newEmployee);
+        else {
+            EmployeeNode current = head;
+            while (current.getEmployee() != targetEmployee) {
+                current = current.getNext();
+            }
+            node.setNext(current.getNext());
+            current.setNext(node);
+        }
     }
 }

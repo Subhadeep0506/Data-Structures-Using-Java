@@ -35,9 +35,12 @@ public class Main {
         //list.printList();
         //System.out.println();
 
-        list.addBefore(billGates, oliverHelden);
-        //list.printList();
+        Employee newEmp = new Employee("fde", "ert", 234);
+        //for debugging purpose. adding new item before an item that don't exist in the list
+        list.addBefore(billGates, maryJane);
+        list.printList();
 
+        System.out.println();
         Employee killBill = new Employee("Kill", "Bill", 3512);
         list.addBefore(killBill, mikeWilliams);
         list.printList();

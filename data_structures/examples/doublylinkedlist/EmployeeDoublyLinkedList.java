@@ -92,15 +92,33 @@ public class EmployeeDoublyLinkedList {
     public void addBefore(Employee newEmployee, Employee targetEmployee){
 
         EmployeeNode node = new EmployeeNode(newEmployee);
+
         if (isEmpty())
-            addToFront(newEmployee);
+            return;
         else {
             EmployeeNode current = head;
-            while (current.getEmployee() != targetEmployee) {
+            while (current != null) {
+                //if element is found, stop
+                if(current.getEmployee() == targetEmployee)
+                    break;
                 current = current.getNext();
             }
-            node.setNext(current.getNext());
-            current.setNext(node);
+            //if reached end of list, exit
+            if(current == null)
+                return;
+            else {
+                node.setNext(current);
+                node.setPrevious(current.getPrevious());
+                current.setPrevious(node);
+
+                if(current == head){
+                    head = node;
+                }
+                else {
+                    node.getPrevious().setNext(node);
+                }
+                size++;
+            }
         }
     }
 }

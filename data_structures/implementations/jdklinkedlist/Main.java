@@ -51,7 +51,7 @@ public class Main {
     *------------Function to print list using Iterator---------------------
     */
     public static void printList(LinkedList<Employee> list){
-        Iterator itor = list.iterator();
+        Iterator<Employee> itor = list.iterator();
         System.out.println("HEAD ->");
         while(itor.hasNext()){
             System.out.print(itor.next() + " <=> ");

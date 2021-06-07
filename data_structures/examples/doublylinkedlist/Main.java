@@ -38,6 +38,7 @@ public class Main {
         Employee newEmp = new Employee("fde", "ert", 234);
         //for debugging purpose. adding new item before an item that don't exist in the list
         list.addBefore(billGates, maryJane);
+        list.addToFront(newEmp);
         list.printList();
 
         System.out.println();

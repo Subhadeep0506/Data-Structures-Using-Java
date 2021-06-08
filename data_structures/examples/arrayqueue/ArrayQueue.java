@@ -53,7 +53,8 @@ public class ArrayQueue {
     }
 
     public void printQueue(){
-
+        if(size() == 0)
+            System.out.println("Queue is empty!");
         for(int i = front; i < back; i++){
             System.out.println(queue[i] + ", ");
         }

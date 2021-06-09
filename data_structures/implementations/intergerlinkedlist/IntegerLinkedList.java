@@ -35,6 +35,23 @@ public class IntegerLinkedList {
         size++;
     }
 
+    public int size() {
+        return size;
+    }
+
+    //  Removes the first node
+    public IntegerNode remove(){
+
+        if(head == null){
+            return null;
+        }
+
+        IntegerNode removeNode = head;
+        head = head.getNext();
+        removeNode.setNext(null);
+        return removeNode;
+    }
+
     public void printList(){
 
         IntegerNode current = head;

@@ -4,7 +4,7 @@ public class EmployeeDoublyLinkedList {
 
     private EmployeeNode tail;
     private EmployeeNode head;
-    private  int size;
+    private int size;
 
     public void addToFront(Employee employee){
 

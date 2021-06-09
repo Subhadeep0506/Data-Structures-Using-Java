@@ -18,6 +18,11 @@ public class Main{
         list.insertSorted(new Node(10));
 
         list.printList();
+        System.out.println();
+        // System.out.println("Removed: " + list.remove());
+        // list.printList();
+
+
     }
 
 }

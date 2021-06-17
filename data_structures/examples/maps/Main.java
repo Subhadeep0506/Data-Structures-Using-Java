@@ -10,6 +10,7 @@ public class Main {
 
         map.put("Father", "Subhendu");
         map.put("Mother", "Swapna");
+        map.put("Brother", "Subhrajyoti");
 
         map.remove("Father");
 

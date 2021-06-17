@@ -20,8 +20,11 @@ public class Main {
         hashTable.put("Smith", marySmith);
         hashTable.put("End", billEnd);
 
-        hashTable.printHashTable();
+        // hashTable.printHashTable();
 
-        System.out.println(hashTable.get("Wilson"));
+        // System.out.println(hashTable.get("Wilson"));
+
+        hashTable.remove("Wilson");
+        hashTable.printHashTable();
     }
 }

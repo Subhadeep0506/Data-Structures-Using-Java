@@ -68,10 +68,10 @@ public class SimpleHashTable {
 
             hashedKey = (hashedKey + 1) % hashTable.length;
 
-        if(stopIndex == hashedKey)
-            return -1;
+        if(hashTable[hashedKey] != null && hashTable[hashedKey].key.equals(key))
+            return hashedKey;
         else
-            return hashedKey;    
+            return -1;    
                
     }
 
@@ -89,6 +89,18 @@ public class SimpleHashTable {
             else    
                 System.out.println(employee.employee);
         }
+    }
+
+    public Employee remove(String key){
+
+        int hashedKey = findKey(key);
+        if(hashedKey == -1){
+            return null;
+        }
+        
+        Employee employee = hashTable[hashedKey].employee;
+        hashTable[hashedKey] = null;
+        return employee;
     }
 
 }

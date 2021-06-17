@@ -52,9 +52,10 @@ public class Tree{
     }
 
     public void traverseInOrder(Node root){
-        if(root == null)
+        if(root == null){
+            System.out.println("Tree is empty");
             return;
-
+        }
         if(root.leftChild != null){
             traverseInOrder(root.leftChild);
         }

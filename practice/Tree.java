@@ -30,11 +30,25 @@ public class Tree{
     }
 
     public void insert(int value){
+        root = insertNode(root, value);
+    }
+
+    public Node insertNode(Node root, int value){
         if(root == null){
             root = new Node(value);
-            return;
+            return root;
         }
-          
+
+        if(value < root.data){
+            root.leftChild = insertNode(root.leftChild, value);
+        } 
+        else if (value > root.data){
+            root.rightChild = insertNode(root.rightChild, value);
+        } 
+        else{
+            return null;
+        }
+        return root;
     }
 
     public void traverseInOrder(Node root){

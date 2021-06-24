@@ -15,6 +15,15 @@ public class Main {
         intTree.insert(22);
         intTree.insert(32);
 
-        intTree.traverse();
+        // intTree.traverse();
+
+        if (intTree.get(30) != null){
+            System.out.println("Element exists");
+        }
+
+        System.out.println(intTree.get(27));
+        
+        System.out.println("Min: " + intTree.min());
+        System.out.println("Max: " + intTree.max());
     }
 }

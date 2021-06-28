@@ -19,14 +19,14 @@ public class Tree {
 
     public void traverse(){
         if(root != null){
-            System.out.print("Preorder: ");
-            root.traversePreOrder();
+            // System.out.print("Preorder: ");
+            // root.traversePreOrder();
             System.out.println();
             System.out.print("Inorder: ");
             root.traverseInOrder();
             System.out.println();
-            System.out.print("Postorder: ");
-            root.traversePostOrder();
+            // System.out.print("Postorder: ");
+            // root.traversePostOrder();
         }
     }
 
@@ -62,7 +62,8 @@ public class Tree {
         root = delete(root, value);
     }
 
-    private TreeNode delete(TreeNode subTreeRoot, int value){
+    private TreeNode delete(TreeNode subTreeRoot, int value) {
+        
         if(subTreeRoot == null){
             return subTreeRoot;
         }
@@ -75,13 +76,18 @@ public class Tree {
         }
         else{
 
-            //  Case 0 and 1.
+            //  Case 1 and 2.
             if(subTreeRoot.getLeftChild() == null){
                 return subTreeRoot.getRightChild();
             }
             else if(subTreeRoot.getRightChild() == null){
                 return subTreeRoot.getLeftChild();
             }
+            //  Case: 3, when Node has 2 children
+            //  Replace RootNode with the min value in the right subtree ...
+            subTreeRoot.setData(subTreeRoot.getRightChild().min());
+            //  ...and delete the node in the right subtree
+            subTreeRoot.setRightChild(delete(subTreeRoot.getRightChild(), subTreeRoot.getData()));
         }
         return subTreeRoot;
     }

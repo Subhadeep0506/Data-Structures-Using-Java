@@ -108,10 +108,6 @@ public class TreeNode {
         }
     }
 
-    public void delete(int value){
-        
-    }
-
     //  Getters and Setters
     public TreeNode(int data) {
         this.data = data;

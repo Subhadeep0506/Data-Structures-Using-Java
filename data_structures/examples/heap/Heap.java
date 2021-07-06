@@ -46,7 +46,7 @@ public class Heap {
     }
 
     //  After inserting a node, we heapify by looking up the tree
-    //  Hence the funcyion fixHeapAbove will heapify the tree above current node
+    //  Hence the function fixHeapAbove will heapify the tree above current node
     private void fixHeapAbove(int index) {
         int newValue = heap[index];
         while (index > 0 && newValue > heap[getParent(index)]) {
@@ -57,6 +57,7 @@ public class Heap {
         heap[index] = newValue;
     }
 
+    //  this function will heapify the tree below current node
     private void fixHeapBelow(int index, int lastHeapIndex) {
         int childToSwap;
 

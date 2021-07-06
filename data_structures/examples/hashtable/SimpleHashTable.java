@@ -5,7 +5,6 @@ public class SimpleHashTable {
     private StoredEmployee[] hashTable;
 
     public SimpleHashTable(){
-
         hashTable = new StoredEmployee[10];
     }
     
@@ -20,11 +19,9 @@ public class SimpleHashTable {
                 hashedKey++;
 
             while(occupied(hashedKey) && hashedKey != stopIndex){
-
                 hashedKey = (hashedKey + 1) % hashTable.length;
             }        
         }
-
         if(occupied(hashedKey)){
             System.out.println("Sorry! The position if filled");
         }
@@ -34,7 +31,6 @@ public class SimpleHashTable {
     }
 
     public Employee get(String key){
-
         int hashedKey = findKey(key);
 
         if(hashedKey == -1)

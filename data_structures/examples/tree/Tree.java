@@ -22,8 +22,10 @@ public class Tree {
             // System.out.print("Preorder: ");
             // root.traversePreOrder();
             System.out.println();
+
             System.out.print("Inorder: ");
             root.traverseInOrder();
+            
             System.out.println();
             // System.out.print("Postorder: ");
             // root.traversePostOrder();
@@ -34,7 +36,6 @@ public class Tree {
         if(root != null){
             return root.get(value);
         }
-
         return null;
     }
 

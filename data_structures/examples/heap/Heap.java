@@ -24,6 +24,7 @@ public class Heap {
         size++;
     }
 
+    //  deletes a node from heap
     public int delete(int index) {
         if (isEmpty()) {
             System.out.println("Heap is empty");
@@ -42,7 +43,16 @@ public class Heap {
             fixHeapAbove(index);
         }
         size--;
-        return deletedNode;    
+        return deletedNode;
+    }
+
+    //  returns the element at root
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Tree is empty");
+        }
+
+        return heap[0];
     }
 
     //  After inserting a node, we heapify by looking up the tree

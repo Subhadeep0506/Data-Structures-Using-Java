@@ -10,5 +10,8 @@ public class Main {
         newTree.insert(20);
         
         newTree.levelOrderTraversal();
+        System.out.println();
+        newTree.delete(5);
+        newTree.levelOrderTraversal();
     }
 }

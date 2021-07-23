@@ -150,4 +150,68 @@ public class AVLTree {
     public void insert(int data) {
         root = insertNode(root, data);
     }
+
+    // finds the minimum node.
+    public static BinaryNode minimumNode(BinaryNode root) {
+        if (root == null)
+            return root;
+        return minimumNode(root.leftChild);
+    }
+    
+    // helper method to delete node
+    public BinaryNode deleteNode(BinaryNode node, int data) {
+        if (node == null) {
+            System.out.println("Value not found");
+            return node;
+        }
+        if (data < node.data) {
+            node.leftChild = deleteNode(node.leftChild, data);
+        } else if (data > node.data) {
+            node.rightChild = deleteNode(node.rightChild, data);
+        } else {
+            // if node has two children
+            if (node.leftChild != null && node.rightChild != null) {
+                BinaryNode tempNode = node;
+                BinaryNode minNodeForRight = minimumNode(tempNode.rightChild);
+                node.data = minNodeForRight.data;
+                node.rightChild = deleteNode(node.rightChild, minNodeForRight.rightChild.data);
+            }
+            // if node has only left child
+            else if (node.leftChild != null) {
+                node = node.leftChild;
+            }
+            // if node has only right child
+            else if (node.rightChild != null) {
+                node = node.rightChild;
+            } else {
+                node = null;
+            }
+        }
+
+        int balance = getBalance(node);
+        // left-left condition
+        if (balance > 1 && getBalance(node.leftChild) >= 0) {
+            return rotateRight(node);
+        }
+        // left-right condition
+        if (balance > 1 && getBalance(node.leftChild) < 0) {
+            node.leftChild = rotateLeft(node.leftChild);
+            return rotateRight(node);
+        }
+        // right-right condition
+        if (balance < -1 && getBalance(node.rightChild) <= 0) {
+            return rotateLeft(node);
+        }
+        // right-left condition
+        if (balance < -1 && getBalance(node.rightChild) > 0) {
+            node.rightChild = rotateRight(node.rightChild);
+            return rotateLeft(node);
+        }
+
+        return node;
+    }
+    
+    public void delete(int data) {
+        root = deleteNode(root, data);
+    }
 }

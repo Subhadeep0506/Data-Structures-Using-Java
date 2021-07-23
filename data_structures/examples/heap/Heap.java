@@ -2,14 +2,14 @@ package data_structures.examples.heap;
 
 public class Heap {
     
-    public int heap[];
+    public int[] heap;
     public int size;
 
     public Heap(int capacity) {
         heap = new int[capacity];
     }
 
-    //  This is a maxheap. So, the elements are inserted in such a manner that,
+    //  This is a max-heap. So, the elements are inserted in such a manner that,
     //  the larger values get placed towards the beginning of the heap
     public void insert(int value) {
 
@@ -103,6 +103,18 @@ public class Heap {
             System.out.print(heap[i] + ", ");
         }
         System.out.println();
+    }
+
+    //  Heap sort
+    public void heapSort() {
+        int lastHeapIndex = size - 1;
+        for (int i = 0; i < lastHeapIndex; i++) {
+            int temp = heap[0];
+            heap[0] = heap[lastHeapIndex - i];
+            heap[lastHeapIndex - i] = temp;
+
+            fixHeapBelow(0, lastHeapIndex - i - 1);
+        }
     }
 
     //  Returns true if the heap is full

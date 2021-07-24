@@ -210,8 +210,14 @@ public class AVLTree {
 
         return node;
     }
-    
+    // callable delete method
     public void delete(int data) {
         root = deleteNode(root, data);
+    }
+
+    // deletes entire avl tree
+    public void deleteTree() {
+        root = null;
+        System.out.println("AVL Tree is deleted entirely");
     }
 }

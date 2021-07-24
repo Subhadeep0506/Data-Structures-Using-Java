@@ -218,6 +218,6 @@ public class AVLTree {
     // deletes entire avl tree
     public void deleteTree() {
         root = null;
-        System.out.println("AVL Tree is deleted entirely");
+        System.out.println("AVL Tree has been deleted entirely");
     }
 }

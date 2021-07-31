@@ -20,7 +20,7 @@ public class EmployeeNode{
 
     public EmployeeNode getNext() {
         return next;
-    }
+    } 
 
     public void setNext(EmployeeNode next) {
         this.next = next;

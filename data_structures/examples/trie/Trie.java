@@ -71,6 +71,7 @@ public class Trie {
                 return true;
             }
         }
+        // case 3: 
         if (currentNode.endOfString == true) {
             delete(currentNode, word, index + 1);
             return false;

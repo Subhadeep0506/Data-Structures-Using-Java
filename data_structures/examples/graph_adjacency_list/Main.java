@@ -20,5 +20,11 @@ public class Main {
         graph.addUndirectedEdge(2, 3);
         graph.addUndirectedEdge(3, 4);
         System.out.println(graph.toString());
+
+        System.out.print("BFS: ");
+        graph.bfs();
+        System.out.println();
+        System.out.print("DFS: ");
+        graph.dfs();
     }
 }

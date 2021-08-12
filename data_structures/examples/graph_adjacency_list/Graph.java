@@ -1,6 +1,8 @@
 package data_structures.examples.graph_adjacency_list;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
     
@@ -33,5 +35,66 @@ public class Graph {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    // BFS internal method
+    private void bfsVisit(GraphNode node) {
+        LinkedList<GraphNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            GraphNode currentNode = queue.remove();
+            currentNode.isVisited = true;
+            System.out.print(currentNode.name + " ");
+            for (GraphNode neighbor : currentNode.neighbors) {
+                if (!neighbor.isVisited) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    // callable BFS method
+    public void bfs() {
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited) {
+                bfsVisit(node);
+            }
+        }
+        setAllNotVisited();
+    }
+    
+    // DFS internal method
+    private void dfsVisit(GraphNode node) {
+        Stack<GraphNode> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            GraphNode currentNode = stack.pop();
+            currentNode.isVisited = true;
+            System.out.print(currentNode.name + " ");
+            for (GraphNode neighbor : currentNode.neighbors) {
+                if (!neighbor.isVisited) {
+                    stack.push(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    // callable dfs method
+    public void dfs() {
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited)
+                dfsVisit(node);
+        }
+        setAllNotVisited();
+    }
+
+    // after traversal, all nodes are set to visited.
+    // this method makes them un visited
+    private void setAllNotVisited() {
+        for (GraphNode node : nodeList) {
+            node.isVisited = false;
+        }
     }
 }

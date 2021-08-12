@@ -24,5 +24,8 @@ public class Main {
         graph.addUndirectedEdge(3, 4);
 
         System.out.println(graph.toString());
+        graph.bfs();
+        System.out.println();
+        graph.dfs();
     }
 }

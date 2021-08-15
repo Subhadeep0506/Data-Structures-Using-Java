@@ -14,11 +14,15 @@ public class Graph {
     }
 
     // calling this function creates a link between 1st node and 2nd node
-    public void addUndirectedEdge(int i /*index of 1st node*/,int j /*index of 2nd node*/) {
+    public void addUndirectedEdge(int i /*index of 1st node*/, int j /*index of 2nd node*/) {
         // since edges are undirected, if one node has connection with another node, 
         // then that node has return connection with the first node
         adjacencyMatrix[i][j] = 1;
         adjacencyMatrix[j][i] = 1;
+    }
+    
+    public void addDirectedEdge(int i, int j) {
+        adjacencyMatrix[i][j] = 1;
     }
 
     // prints the adjacency matrix
@@ -109,6 +113,31 @@ public class Graph {
     private void setAllNotVisited() {
         for (GraphNode node : nodeList) {
             node.isVisited = false;
+        }
+    }
+
+    // Topological Sort helper method
+    private void topologicalVisit(GraphNode node, Stack<GraphNode> stack) {
+        ArrayList<GraphNode> neighbors = getNeighbors(node);
+        for (GraphNode neighbor : neighbors) {
+            if (!neighbor.isVisited)
+                topologicalVisit(neighbor, stack);
+        }
+        node.isVisited = true;
+        stack.push(node);
+    }
+
+    // callable topological sort method
+    public void topologicalSort() {
+        Stack<GraphNode> stack = new Stack<>();
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited) {
+                topologicalVisit(node, stack);
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop().name + " ");
         }
     }
 }

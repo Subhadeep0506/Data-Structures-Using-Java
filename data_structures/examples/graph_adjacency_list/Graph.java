@@ -20,6 +20,12 @@ public class Graph {
         firstNode.neighbors.add(secondNode);
         secondNode.neighbors.add(firstNode);
     }
+
+    public void addDirectedEdge(int i, int j) {
+        GraphNode firstNode = nodeList.get(i);
+        GraphNode secondNode = nodeList.get(j);
+        firstNode.neighbors.add(secondNode);
+    }
     
     // To print the graph
     public String toString() {
@@ -95,6 +101,30 @@ public class Graph {
     private void setAllNotVisited() {
         for (GraphNode node : nodeList) {
             node.isVisited = false;
+        }
+    }
+
+    // helper method for topological sort
+    private void topologicalVisit(GraphNode node, Stack<GraphNode> stack) {
+        for (GraphNode neighbor : node.neighbors) {
+            if (!neighbor.isVisited)
+                topologicalVisit(neighbor, stack);
+        }
+
+        node.isVisited = true;
+        stack.push(node);
+    }
+
+    // callable topological sort method
+    public void topologicalSort() {
+        Stack<GraphNode> stack = new Stack<>();
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited)
+                topologicalVisit(node, stack);
+        }
+
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop().name + " ");
         }
     }
 }

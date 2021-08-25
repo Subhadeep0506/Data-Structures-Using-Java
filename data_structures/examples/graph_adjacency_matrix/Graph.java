@@ -140,4 +140,33 @@ public class Graph {
             System.out.print(stack.pop().name + " ");
         }
     }
+
+    // prints the path of each vertex from source
+    public void pathPrint(GraphNode node) {
+        if (node.parent != null) {
+            pathPrint(node.parent);
+        }
+
+        System.out.print(node.name + " ");
+    }
+
+    public void BFSForSSSPP(GraphNode node) {
+        LinkedList<GraphNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            GraphNode currentNode = queue.remove(0);
+            currentNode.isVisited = true;
+            System.out.print("Printing path for node: " + currentNode.name + ": ");
+            pathPrint(currentNode);
+            System.out.println();
+            ArrayList<GraphNode> neighbors = getNeighbors(currentNode);
+            for (GraphNode neighbor : neighbors) {
+                if (!neighbor.isVisited) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                    neighbor.parent = currentNode;
+                }
+            }
+        }
+    } 
 }

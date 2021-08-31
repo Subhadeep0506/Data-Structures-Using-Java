@@ -57,7 +57,7 @@ public class WeightedGraph {
 
     // Bellman Ford algorithm
     public void useBellmanFord(WeightedNode sourceNode) {
-        sourceNode.distance = 0;    // all other nodes' distance is already set to infinity
+        sourceNode.distance = 0; // all other nodes' distance is already set to infinity
         for (int i = 0; i < nodeList.size(); i++) {
             for (WeightedNode currentNode : nodeList) {
                 for (WeightedNode neighbor : currentNode.neighbors) {
@@ -82,11 +82,50 @@ public class WeightedGraph {
                 }
             }
         }
-        
+
         System.out.println("No negetive cycle found.");
         for (WeightedNode nodeToCheck : nodeList) {
             System.out.print("Node: " + nodeToCheck + ", distance: " + nodeToCheck.distance + ", path: ");
             pathPrint(nodeToCheck);
+            System.out.println();
+        }
+    }
+
+    // Floyd Warshall Algorithm
+    public void floydWarshall() {
+        int size = nodeList.size();
+        int[][] v = new int[size][size];
+        // saving the values to the weights of paths
+        // 0 for same vertex, Infinity for edges that has no reach
+        for (int i = 0; i < size; i++) {
+            WeightedNode first = nodeList.get(i);
+            for (int j = 0; j < size; j++) {
+                WeightedNode second = nodeList.get(j);
+                if (i == j) {
+                    v[i][j] = 0;
+                } else if (first.weightMap.containsKey(second)) {
+                    v[i][j] = first.weightMap.get(second);
+                } else {
+                    v[i][j] = Integer.MAX_VALUE / 10;
+                }
+            }
+        }
+        // the floyd warshall algorithm
+        for (int k = 0; k < nodeList.size(); k++) {
+            for (int i = 0; i < nodeList.size(); i++) {
+                for (int j = 0; j < nodeList.size(); j++) {
+                    if (v[i][j] > v[i][k] + v[k][j]) {
+                        v[i][j] = v[i][k] + v[k][j];
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < size; i++) {
+            System.out.print("Printing distance list for node " + nodeList.get(i) + ": ");
+            for (int j = 0; j < size; j++) {
+                System.out.print(v[i][j] + " ");
+            }
             System.out.println();
         }
     }

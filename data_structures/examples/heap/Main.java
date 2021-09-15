@@ -2,9 +2,9 @@ package data_structures.examples.heap;
 
 public class Main {
     public static void main(String[] args) {
-        
+
         Heap heap = new Heap(10);
-        
+
         heap.insert(80);
         heap.insert(75);
         heap.insert(60);
@@ -13,7 +13,7 @@ public class Main {
         heap.insert(40);
         heap.insert(52);
         heap.insert(67);
-        
+
         heap.printHeap();
 
         //heap.delete(2);

@@ -45,6 +45,7 @@ public class Graph {
           }
         }
         currentNode.state = State.Visited;
+        
       }
     }
 
